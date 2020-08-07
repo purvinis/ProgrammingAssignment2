@@ -1,10 +1,12 @@
+## Aloha from Kauai and thank you (Mahalo) for reviewing my code
+
 ## The function makeCacheMatrix returns a matrix object that, when called
 ## by makeCacheMatrix, will cache the matrix and compute and cache its
 ## inverse. 
 
 ## This function creates a "matrix" object that can cache its inverse.
 ## cacheSolve() uses this function
-## cacheSolve() needs a makeCacheMatrix object as its arguement
+## cacheSolve() needs a makeCacheMatrix object as its argument
 
 makeCacheMatrix <- function(x = matrix()) {
       invOfx <- NULL                                 #initiallize the inverse
