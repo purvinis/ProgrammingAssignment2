@@ -14,7 +14,25 @@ makeVector <- function(x = numeric()) {
       #browser()
 }
 
-ans = makeVector(c(2,3,4,5))
+cachemean <- function(x, ...) {
+      m <- x$getmean()
+      if(!is.null(m)) {
+            message("getting cached data")
+            return(m)
+      }
+      data <- x$get()
+      m <- mean(data, ...)
+      x$setmean(m)
+      m
+}
+
+aVector <- makeVector(1:10)
+aVector$get()               # retrieve the value of x
+aVector$getmean()           # retrieve the value of m, which should be NULL
+aVector$set(30:50)          # reset value with a new vector
+cachemean(aVector)          # notice mean calculated is mean of 30:50, not 1:10
+aVector$getmean()           # retrieve it directly, now that it has been cached
+
 
 counter <- function() {   #function with no arguments
       x <- 0
