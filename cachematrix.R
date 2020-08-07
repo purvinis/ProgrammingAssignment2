@@ -7,14 +7,14 @@
 ## The function returns a list of functions
 
 makeCacheMatrix <- function(x = matrix()) {
-      invOfx < NULL                                 #initiallize the inverse
+      invOfx <- NULL                                 #initiallize the inverse
       set <- function(y) {
             x <<- y                              #globally accessible
             invOfx <<- NULL                      #globally accessible
       }
       get <- function() x                        #cacheSolve can ask for matrix
       setInv <- function(solve) invOfx <<- solve
-      getIvn <- function() invOfx                #cacheSolve can ask for inverse
+      getInv <- function() invOfx                #cacheSolve can ask for inverse
       list(set = set, get = get,
            setInv = setInv,
            getInv = getInv)
