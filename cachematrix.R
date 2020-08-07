@@ -44,9 +44,9 @@ cacheSolve <- function(x, ...) {   ## Return a matrix that is the inverse of 'x'
 }
 
 #Code to test:
-n1 <- matrix(c(6,2,8,4), nrow = 2, ncol = 2)
-specialm <- makeCacheMatrix(n1)
-cacheSolve(specialm)
+#n1 <- matrix(c(6,2,8,4), nrow = 2, ncol = 2)
+#specialm <- makeCacheMatrix(n1)
+#cacheSolve(specialm)
 
 
 
