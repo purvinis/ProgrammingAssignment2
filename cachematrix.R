@@ -9,15 +9,15 @@
 ## cacheSolve() needs a makeCacheMatrix object as its argument
 
 makeCacheMatrix <- function(x = matrix()) {
-      invOfx <- NULL                                 #initiallize the inverse
-      set <- function(y) {
+      invOfx <- NULL                             #initiallize the inverse
+      set <- function(y) {                       #store matrix and initial inverse
             x <<- y                              #globally accessible
             invOfx <<- NULL                      #globally accessible
       }
-      get <- function() x                        #cacheSolve can ask for matrix
-      setInv <- function(solve) invOfx <<- solve
+      get <- function() x                        #cacheSolve can get matrix via funct
+      setInv <- function(solve) invOfx <<- solve #funct to stor inverse
       getInv <- function() invOfx                #cacheSolve can ask for inverse
-      list(set = set, get = get,
+      list(set = set, get = get,                 #return values and functions
            setInv = setInv,
            getInv = getInv)
       
@@ -30,20 +30,22 @@ makeCacheMatrix <- function(x = matrix()) {
 ##the inverse from the cache.
 
 cacheSolve <- function(x, ...) {   ## Return a matrix that is the inverse of 'x'
-      #x <- as.data.frame(x)
-      invOfx <- x$getInv()
-      if(!is.null(invOfx)) {
+     
+      invOfx <- x$getInv()          #get cached inverse
+      if(!is.null(invOfx)) {        #check to see if inverse is null
             message("getting cached inverse data")
-            return(invOfx)
+            return(invOfx)          #if not null, return invers
       }
-
-      data <- x$get()
-      invOfx <- solve(data, ...)
-      x$setInv(invOfx)
-      invOfx
+                                    
+      data <- x$get()                #if cached inv was null, then calc. for this
+      invOfx <- solve(data, ...)     #data using Solve(x) function
+      x$setInv(invOfx)               #store in cache new inverse
+      invOfx                         #return inverse
 }
 
-#Code to test:
+#Code for testing verification:
+#If you uncomment this code, you can test the functions
+#
 #n1 <- matrix(c(6,2,8,4), nrow = 2, ncol = 2)
 #specialm <- makeCacheMatrix(n1)
 #cacheSolve(specialm)
