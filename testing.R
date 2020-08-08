@@ -1,3 +1,5 @@
+#THIS IS JUST A TEST FILE FOR UNDERSTANDING THE EXAMPLE FOR VECTOR MEAN
+
 makeVector <- function(x = numeric()) {
       m <- NULL
       set <- function(y) {
